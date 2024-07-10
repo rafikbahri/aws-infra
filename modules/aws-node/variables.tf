@@ -27,6 +27,12 @@ variable "tags" {
   default     = {}
 }
 
+variable "vpc_id" {
+  description = "Associated VPC ID"
+  type        = string
+  default     = ""
+}
+
 variable "subnet_id" {
   description = "Associated subnet ID"
   type        = string
@@ -37,4 +43,22 @@ variable "has_public_ip" {
   description = "Whether the instance has a public IP address"
   type        = string
   default     = false
+}
+
+variable "create_key" {
+  description = "Whether to create a key pair or not"
+  type        = bool
+  default     = true
+}
+
+variable "key_name" {
+  description = "Key pair name"
+  type        = string
+  default     = "key-pair"
+}
+
+variable "ssh_enabled" {
+  description = "Whether SSH access to the instance is enabled or not"
+  type        = bool
+  default     = true
 }
