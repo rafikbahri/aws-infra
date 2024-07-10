@@ -1,6 +1,6 @@
 variable server_count {
   description = "Number of nodes to be created"
-  default     = 3
+  default     = 1
 }
 
 variable server_prefix {
