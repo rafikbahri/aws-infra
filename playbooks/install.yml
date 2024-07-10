@@ -1,0 +1,7 @@
+---
+- name: Install ArgoCD
+  hosts: ec2
+  tasks:
+    - name: Install ArgoCD
+      ansible.builtin.debug:
+        msg: "Install ArgoCD"
