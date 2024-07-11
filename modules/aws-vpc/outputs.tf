@@ -17,3 +17,8 @@ output "igw_id" {
   description = "ID of the Internet Gateway"
   value       = try(aws_internet_gateway.gtw[0].id, "")
 }
+
+output "route_table_id" {
+  description = "ID of the route table"
+  value       = aws_route_table.default.id
+}

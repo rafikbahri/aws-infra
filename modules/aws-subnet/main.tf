@@ -11,3 +11,8 @@ resource "aws_subnet" "subnet" {
     var.tags
   )
 }
+
+resource "aws_route_table_association" "internet" {
+  subnet_id      = aws_subnet.subnet.id
+  route_table_id = var.default_route_table_id
+}

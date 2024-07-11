@@ -24,6 +24,13 @@ variable "map_public_ip_on_launch" {
   default     = false
 }
 
+variable "default_route_table_id" {
+  description = "Default route table ID"
+  type        = string
+  default     = ""
+}
+
+
 variable "tags" {
   description = "A map of tags to add to all resources in the subnet"
   type        = map(string)

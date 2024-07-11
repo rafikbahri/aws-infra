@@ -9,6 +9,7 @@ module "main-vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
   instance_tenancy     = "default"
+  create_igw           = true
   tags = {
     vpc = "main"
   }
@@ -21,6 +22,7 @@ module "internal-subnet" {
   availability_zone       = "eu-west-3a"
   cidr_block              = "192.168.171.0/24"
   map_public_ip_on_launch = true
+  default_route_table_id  = module.main-vpc.route_table_id
 }
 
 module "ec2-internal-cluster" {
@@ -29,6 +31,7 @@ module "ec2-internal-cluster" {
   server_prefix = var.server_prefix
   ami_id        = var.ami_id
   instance_type = var.instance_type
+  vpc_id        = module.main-vpc.vpc_id
   subnet_id     = module.internal-subnet.subnet_id
   tags = {
     purpose   = "test"
