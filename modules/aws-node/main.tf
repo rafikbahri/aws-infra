@@ -8,7 +8,7 @@ resource "aws_security_group" "ssh_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # Change it with IP each time
+    cidr_blocks = ["88.178.215.32/32"] # SSH only from my public internet IP
   }
 
   egress {
