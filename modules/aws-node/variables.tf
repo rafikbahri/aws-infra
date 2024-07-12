@@ -39,6 +39,13 @@ variable "subnet_id" {
   default     = ""
 }
 
+variable "security_groups" {
+  description = "List of security groups"
+  type        = list(any)
+  default     = []
+}
+
+
 variable "has_public_ip" {
   description = "Whether the instance has a public IP address"
   type        = string
