@@ -1,28 +1,3 @@
-resource "aws_security_group" "ssh_sg" {
-  count       = var.ssh_enabled ? 1 : 0
-  name        = "ssh_security_group"
-  description = "Security group for SSH access"
-  vpc_id      = var.vpc_id
-  ingress {
-    description = "SSH from everywhere (dangerous), changes need to be made."
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["88.178.215.32/32"] # SSH only from my public internet IP
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = {
-    Name = "ssh_security_group"
-  }
-}
-
 resource "tls_private_key" "tls-private-key" {
   count     = var.create_key ? 1 : 0
   algorithm = "RSA"
@@ -38,7 +13,7 @@ resource "aws_key_pair" "key-pair" {
 resource "aws_network_interface" "interface" {
   subnet_id       = var.subnet_id
   private_ips     = ["192.168.171.31"]
-  security_groups = [aws_security_group.ssh_sg[0].id]
+  security_groups = var.security_groups
   tags = {
     Name = "primary_network_interface"
   }
