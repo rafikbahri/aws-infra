@@ -1,16 +1,41 @@
 ---
 name: CI
 run-name: CI
-on: [push]
+on: 
+  push: 
+    branches: [ main ]
+  pull_request: 
+    branches: [ main ]
+
 jobs:
   ci:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - name: ansible-lint
-        uses: ansible/ansible-lint@main
-      - name: markdownlint
-        uses: DavidAnson/markdownlint-cli2-action@v16
-        with:
-          config: .config/.markdownlint.yml
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: 1.9.2
+
+    - name: Terraform Format
+      run: terraform fmt -check
+
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Validate
+      run: terraform validate
+
+    - name: Terraform Plan
+      run: terraform plan
+
+    - name: Check out repository code
+      uses: actions/checkout@v4
+
+    - name: ansible-lint
+      uses: ansible/ansible-lint@main
+
+    - name: markdownlint
+      uses: DavidAnson/markdownlint-cli2-action@v16
+      with:
+        config: .config/.markdownlint.yml
