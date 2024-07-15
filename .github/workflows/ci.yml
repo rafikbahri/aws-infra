@@ -12,6 +12,9 @@ jobs:
       with:
         terraform_version: 1.9.2
 
+    - name: Check out repository code
+      uses: actions/checkout@v4
+
     - name: Terraform Format
       run: terraform fmt -check
 
@@ -23,9 +26,6 @@ jobs:
 
     - name: Terraform Plan
       run: terraform plan
-
-    - name: Check out repository code
-      uses: actions/checkout@v4
 
     - name: ansible-lint
       uses: ansible/ansible-lint@main
