@@ -8,3 +8,8 @@ This repo contains custom Terraform modules to build AWS infrastructure (EC2, su
 
 TODOs
 -----
+
+Finish CI:
+
+- set access keys
+- test

@@ -104,5 +104,5 @@ kinds:
   # - tasks: "**/tasks/*.yml"
   # - vars: "**/vars/*.yml"
   # - meta: "**/meta/main.yml"
-  - yaml: "**/*.yaml-too"
+  - yaml: ".github/workflows/*.yaml"
 task_name_prefix: "{stem} | "
