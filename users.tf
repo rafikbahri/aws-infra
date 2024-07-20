@@ -19,7 +19,6 @@ module "github-actions-role" {
     "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess",
     "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
   ]
-
 }
 
 module "github-actions-user" {

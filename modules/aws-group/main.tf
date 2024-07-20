@@ -1,3 +1,3 @@
-resource "aws_iam_groupr" "group" {
-  name = var.group
+resource "aws_iam_group" "group" {
+  name = var.group_name
 }
