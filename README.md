@@ -11,8 +11,9 @@ TODOs
 
 Finish CI:
 
-- set access keys
+- set access keys using aws profiles
 - test
+
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
