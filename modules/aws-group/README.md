@@ -17,7 +17,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_iam_groupr.group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_groupr) | resource |
+| [aws_iam_group.group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group) | resource |
 
 ## Inputs
 
