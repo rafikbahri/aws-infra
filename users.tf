@@ -1,31 +1,24 @@
-module "github-actions-role" {
-  source    = "./modules/aws-role"
-  role_name = "github-actions-role"
-
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Principal = {
-          Service = "ec2.amazonaws.com"
-        }
-      }
-    ]
-  })
-
-  policy_arns = [
-    "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess",
-    "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
-  ]
-}
-
 module "github-actions-user" {
   source = "./modules/aws-user"
 
-  username = "github-actions-user"
+  username = "github-actions"
+  path     = "/system/"
   policy_arns = [
     "arn:aws:iam::aws:policy/AmazonS3FullAccess",
   ]
+  tags = {
+    type    = "service"
+    context = "ci"
+    tool    = "github-actions"
+  }
+}
+
+resource "local_sensitive_file" "github-actions-credentials" {
+  filename = pathexpand("~/.config/aws-github-actions")
+
+  content         = <<-EOT
+          export GH_AWS_ACCESS_KEY_ID=${module.github-actions-user.access_key_id}
+          export GH_AWS_SECRET_ACCESS_KEY=${module.github-actions-user.secret_access_key}
+          EOT
+  file_permission = "0600"
 }

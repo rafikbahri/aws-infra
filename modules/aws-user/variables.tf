@@ -20,3 +20,9 @@ variable "policy_arns" {
   type        = list(string)
   default     = []
 }
+
+variable "tags" {
+  description = "Tags to this user"
+  type        = map(string)
+  default     = {}
+}

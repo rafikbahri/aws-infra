@@ -11,5 +11,5 @@ TODOs
 
 Finish CI:
 
-- set access keys
+- set access keys using aws profiles
 - test
