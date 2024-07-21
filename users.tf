@@ -22,5 +22,3 @@ resource "local_sensitive_file" "github-actions-credentials" {
           EOT
   file_permission = "0600"
 }
-
-
