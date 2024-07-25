@@ -19,5 +19,6 @@ module "etcd-cluster" {
   security_groups = [module.sg-admin.sg_id]
   tags = {
     component = "etcd"
+    tier      = "infra"
   }
 }
