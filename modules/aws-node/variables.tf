@@ -39,6 +39,13 @@ variable "subnet_id" {
   default     = ""
 }
 
+variable "private_ips" {
+  description = "List of private IPs for this instance"
+  type        = list(any)
+  default     = []
+}
+
+
 variable "security_groups" {
   description = "List of security groups"
   type        = list(any)
