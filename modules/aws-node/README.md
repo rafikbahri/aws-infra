@@ -22,7 +22,6 @@ No modules.
 | [aws_instance.instance](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) | resource |
 | [aws_key_pair.key-pair](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
 | [aws_network_interface.interface](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_interface) | resource |
-| [aws_security_group.ssh_sg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [local_file.ssh_config](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [local_file.ssh_key](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [tls_private_key.tls-private-key](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key) | resource |
@@ -36,6 +35,8 @@ No modules.
 | <a name="input_has_public_ip"></a> [has\_public\_ip](#input\_has\_public\_ip) | Whether the instance has a public IP address | `string` | `false` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | EC2 instance type | `string` | `"t2.micro"` | no |
 | <a name="input_key_name"></a> [key\_name](#input\_key\_name) | Key pair name | `string` | `"key-pair"` | no |
+| <a name="input_private_ips"></a> [private\_ips](#input\_private\_ips) | List of private IPs for this instance | `list(any)` | `[]` | no |
+| <a name="input_security_groups"></a> [security\_groups](#input\_security\_groups) | List of security groups | `list(any)` | `[]` | no |
 | <a name="input_server_count"></a> [server\_count](#input\_server\_count) | Number of nodes to be created | `number` | `0` | no |
 | <a name="input_server_prefix"></a> [server\_prefix](#input\_server\_prefix) | Instance name prefix | `string` | `"ec2"` | no |
 | <a name="input_ssh_enabled"></a> [ssh\_enabled](#input\_ssh\_enabled) | Whether SSH access to the instance is enabled or not | `bool` | `true` | no |

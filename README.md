@@ -13,3 +13,4 @@ Finish CI:
 
 - set access keys using aws profiles
 - test
+- bastions with ASG

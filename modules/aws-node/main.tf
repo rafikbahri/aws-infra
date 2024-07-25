@@ -12,7 +12,7 @@ resource "aws_key_pair" "key-pair" {
 
 resource "aws_network_interface" "interface" {
   subnet_id       = var.subnet_id
-  private_ips     = ["192.168.171.31"]
+  private_ips     = var.private_ips
   security_groups = var.security_groups
   tags = {
     Name = "primary_network_interface"
@@ -39,15 +39,16 @@ resource "aws_instance" "instance" {
 resource "local_file" "ssh_key" {
   count           = var.create_key ? 1 : 0
   content         = tls_private_key.tls-private-key[0].private_key_pem
-  filename        = ".ssh/ec2.pem"
+  filename        = ".ssh/bastion.pem"
   file_permission = "0600"
 }
 
 resource "local_file" "ssh_config" {
   content = templatefile("${path.module}/ssh_config.tpl", {
-    hostname    = tostring(aws_instance.instance[0].public_ip)
+    ip          = tostring(aws_instance.instance[0].public_ip)
     user        = "ec2-user"
-    private_key = var.create_key ? ".ssh/ec2.pem" : ""
+    private_key = var.create_key ? ".ssh/bastion.pem" : ""
+    hostname    = tostring(aws_instance.instance[0].tags.Name)
   })
   filename = ".ssh/config"
 }

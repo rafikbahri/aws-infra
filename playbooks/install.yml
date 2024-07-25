@@ -1,7 +1,7 @@
 ---
-- name: Install ArgoCD
-  hosts: ec2
+- name: Ansible playbook test
+  hosts: all
   tasks:
-    - name: Install ArgoCD
+    - name: Test
       ansible.builtin.debug:
-        msg: "Install ArgoCD"
+        msg: "This test is to check SSH connectivity"
