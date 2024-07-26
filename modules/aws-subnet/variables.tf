@@ -24,6 +24,12 @@ variable "map_public_ip_on_launch" {
   default     = false
 }
 
+variable "has_internet_access" {
+  description = "Whether this networl has internet access"
+  type        = bool
+  default     = false
+}
+
 variable "default_route_table_id" {
   description = "Default route table ID"
   type        = string
