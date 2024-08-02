@@ -35,7 +35,6 @@ resource "aws_instance" "instance" {
     network_interface_id = aws_network_interface.interface.id
     device_index         = 0
   }
-  user_data = base64encode(file("${path.module}/cloudinit_user_data.yaml"))
   tags = merge(
     {
       Name = format("%s00%d", var.server_prefix, count.index + 1)
