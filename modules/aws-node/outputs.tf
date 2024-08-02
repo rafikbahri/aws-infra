@@ -17,3 +17,8 @@ output "private_key" {
   value     = var.create_key ? tls_private_key.tls-private-key[0].private_key_pem : null
   sensitive = true
 }
+
+output "identity_file" {
+  value     = var.create_key ? local_file.ssh-key[0].filename : null
+  sensitive = true
+}
