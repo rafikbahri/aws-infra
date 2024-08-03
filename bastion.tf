@@ -4,9 +4,8 @@ module "bastions-subnet" {
   name                    = "bastion-subnet"
   vpc_id                  = module.main-vpc.vpc_id
   availability_zone       = "eu-west-3a"
-  cidr_block              = "192.168.10.0/24"
+  cidr_block              = "192.168.15.0/24"
   map_public_ip_on_launch = true
-  has_internet_access     = false
   default_route_table_id  = module.main-vpc.route_table_id
   tags = {
     kind  = "public"
