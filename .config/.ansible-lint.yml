@@ -3,24 +3,18 @@
 
 profile: null # min, basic, moderate,safety, shared, production
 
-# Allows dumping of results in SARIF format
-# sarif_file: result.sarif
 
-# exclude_paths included in this file are parsed relative to this file's location
-# and not relative to the CWD of execution. CLI arguments passed to the --exclude
-# option are parsed relative to the CWD of execution.
 exclude_paths:
-  - .cache/ # implicit unless exclude_paths is defined in config
-  - test/fixtures/formatting-before/
-  - test/fixtures/formatting-prettier/
+  - .github/
+  - .config/
+  - modules/
+  - jobs/
+
 # parseable: true
 # quiet: true
 # strict: true
 # verbosity: 1
 
-# Mock modules or roles in order to pass ansible-playbook --syntax-check
-mock_modules:
-  - amazon.aws
 mock_roles:
   - amazon.aws.s3_bucket_info
   - author.role_name # old standalone galaxy role
@@ -84,25 +78,11 @@ warn_list:
 # Offline mode disables installation of requirements.yml and schema refreshing
 offline: true
 
-# Define required Ansible's variables to satisfy syntax check
-extra_vars:
-  foo: bar
-  multiline_string_variable: |
-    line1
-    line2
-  complex_variable: ":{;\t$()"
-
-# Uncomment to enforce action validation with tasks, usually is not
-# needed as Ansible syntax check also covers it.
-# skip_action_validation: false
-
-# List of additional kind:pattern to be added at the top of the default
-# match list, first match determines the file kind.
 kinds:
-  # - playbook: "**/examples/*.{yml,yaml}"
+  - playbook: "**/playbooks/*.{yml,yaml}"
   # - galaxy: "**/folder/galaxy.yml"
   # - tasks: "**/tasks/*.yml"
   # - vars: "**/vars/*.yml"
   # - meta: "**/meta/main.yml"
-  - yaml: ".github/workflows/*.yaml"
+  # - yaml: ".github/workflows/*.yaml"
 task_name_prefix: "{stem} | "

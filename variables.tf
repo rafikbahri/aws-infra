@@ -1,3 +1,9 @@
+variable "environment" {
+  description = "Environment type (production, development, staging)"
+  type        = string
+  default     = "development"
+}
+
 variable "server_count" {
   description = "Number of nodes to be created"
   default     = 1
