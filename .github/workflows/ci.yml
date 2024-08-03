@@ -36,6 +36,8 @@ jobs:
 
       - name: ansible-lint
         uses: ansible/ansible-lint@main
+        with:
+          args: -c .config/.ansible-lint.yml
 
       - name: markdownlint
         uses: DavidAnson/markdownlint-cli2-action@v16

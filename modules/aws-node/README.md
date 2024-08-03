@@ -22,8 +22,7 @@ No modules.
 | [aws_instance.instance](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) | resource |
 | [aws_key_pair.key-pair](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
 | [aws_network_interface.interface](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_interface) | resource |
-| [local_file.ssh_config](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
-| [local_file.ssh_key](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
+| [local_file.ssh-key](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [tls_private_key.tls-private-key](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key) | resource |
 
 ## Inputs
@@ -48,6 +47,8 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_hostnames"></a> [hostnames](#output\_hostnames) | List of hostnames (one per instance) |
+| <a name="output_identity_file"></a> [identity\_file](#output\_identity\_file) | n/a |
 | <a name="output_instance_id"></a> [instance\_id](#output\_instance\_id) | ID of the created EC2 instance |
 | <a name="output_private_key"></a> [private\_key](#output\_private\_key) | n/a |
 | <a name="output_public_ip"></a> [public\_ip](#output\_public\_ip) | Public IP of the created EC2 instance |

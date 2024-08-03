@@ -22,6 +22,7 @@ module "bastions" {
   instance_type   = "t2.micro"
   vpc_id          = module.main-vpc.vpc_id
   subnet_id       = module.bastions-subnet.subnet_id
+  private_ips     = ["192.168.15.11"]
   security_groups = [module.sg-admin.sg_id]
   tags = {
     purpose     = "bastion"
