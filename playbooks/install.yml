@@ -1,6 +1,7 @@
 ---
 - name: Ansible playbook test
   hosts: bastions
+  gather_facts: false
   pre_tasks:
     - name: Wait for target connection to become reachable/usable
       ansible.builtin.wait_for_connection:
