@@ -4,6 +4,11 @@
   pre_tasks:
     - name: Wait for target connection to become reachable/usable
       ansible.builtin.wait_for_connection:
+        connect_timeout: 15
+        delay: 5
+        timeout: 300
+      retries: 5
+
   tasks:
     - name: Test
       ansible.builtin.debug:

@@ -11,6 +11,7 @@ TODOs
 
 Finish CI:
 
+- upgrade ansible/ansible-lint locally
 - set access keys using aws profiles
 - test
 - bastions with ASG
