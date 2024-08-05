@@ -1,7 +1,7 @@
 ---
 # Style
 MD003:
-  style: setext
+  style: setext_with_atx
 # MD013/line-length : Line length : https://github.com/DavidAnson/markdownlint/blob/v0.34.0/doc/md013.md
 MD013:
   # Number of characters
