@@ -9,11 +9,14 @@ This repo contains custom Terraform modules to build AWS infrastructure (EC2, su
 TODOs
 -----
 
-Finish CI:
+### Project
 
 - main branch security strategy
-- fix ansible-lint: does not scan roles? fix paths
 - upgrade ansible/ansible-lint locally
 - set access keys using aws profiles
 - test
+
+### Features
+
+- bastion proxyjump for etcd
 - bastions with ASG
