@@ -11,6 +11,7 @@ TODOs
 
 Finish CI:
 
+- main branch security strategy
 - upgrade ansible/ansible-lint locally
 - set access keys using aws profiles
 - test
