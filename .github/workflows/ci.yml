@@ -25,6 +25,8 @@ jobs:
 
       - name: Terraform Format
         run: terraform fmt -check
+        env:
+          TF_CLI_ARGS: ""
 
       - name: Terraform Init
         run: terraform init
@@ -34,6 +36,7 @@ jobs:
 
       - name: Terraform Plan
         run: terraform plan
+
 
       - name: ansible-lint
         uses: ansible/ansible-lint@main
