@@ -8,8 +8,8 @@ resource "local_file" "inventory" {
 ${module.bastions.hostnames[0]}
 
 [etcd]
-%{for index in range(length(module.etcd-cluster.hostnames))~}
+%{for index in range(length(module.etcd-cluster.hostnames))}
 ${element(module.etcd-cluster.hostnames, index)}
-%{endfor~}
+%{endfor}
 EOT
 }
