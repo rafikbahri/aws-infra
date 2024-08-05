@@ -13,7 +13,7 @@ module "etcd-private-subnet" {
 
 module "etcd-cluster" {
   source        = "./modules/aws-node"
-  server_count  = 3
+  server_count  = 0
   server_prefix = "etcd"
   ami_id        = "ami-0546127e0cf2c6498"
   instance_type = "t2.micro"
