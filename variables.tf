@@ -1,12 +1,17 @@
-variable "environment" {
-  description = "Environment type (production, development, staging)"
+variable "platform" {
+  description = "Environment type (dev, prod, staging)"
   type        = string
-  default     = "development"
+  default     = "dev"
 }
 
-variable "server_count" {
-  description = "Number of nodes to be created"
-  default     = 1
+variable "bastion_servers_count" {
+  description = "Number of bastion nodes to be created"
+  default     = 0
+}
+
+variable "etcd_cluster_servers_count" {
+  description = "Number of etcd cluster nodes to be created"
+  default     = 0
 }
 
 variable "server_prefix" {

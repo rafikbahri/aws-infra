@@ -2,4 +2,6 @@
 .terraform*
 terraform.tfstate*
 .ssh/
-inventory/development
+inventory/dev
+inventory/prod
+inventory/staging

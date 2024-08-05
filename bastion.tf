@@ -16,7 +16,7 @@ module "bastions-subnet" {
 
 module "bastions" {
   source          = "./modules/aws-node"
-  server_count    = 1
+  server_count    = var.bastion_servers_count
   server_prefix   = "bastion"
   ami_id          = "ami-0546127e0cf2c6498"
   instance_type   = "t2.micro"
