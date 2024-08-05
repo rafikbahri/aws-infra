@@ -1,0 +1,4 @@
+# Terraform managed
+[all]
+[bastions]
+bastion001

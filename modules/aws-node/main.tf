@@ -18,11 +18,12 @@ resource "local_file" "ssh-key" {
 }
 
 resource "aws_network_interface" "interface" {
+  count           = var.server_count
   subnet_id       = var.subnet_id
   private_ips     = var.private_ips
   security_groups = var.security_groups
   tags = {
-    Name = "primary_network_interface"
+    Name = format("primary_iface_%s00%d", var.server_prefix, count.index + 1)
   }
 }
 
@@ -32,7 +33,7 @@ resource "aws_instance" "instance" {
   instance_type = var.instance_type
   key_name      = var.create_key ? aws_key_pair.key-pair[0].key_name : null
   network_interface {
-    network_interface_id = aws_network_interface.interface.id
+    network_interface_id = aws_network_interface.interface[count.index].id
     device_index         = 0
   }
   tags = merge(
