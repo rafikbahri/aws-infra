@@ -13,6 +13,7 @@ resource "aws_subnet" "subnet" {
 }
 
 resource "aws_route_table_association" "internet" {
+  count          = var.has_internet_access ? 1 : 0
   subnet_id      = aws_subnet.subnet.id
   route_table_id = var.default_route_table_id
 }

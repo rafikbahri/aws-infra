@@ -13,6 +13,11 @@ output "public_ip" {
   value       = aws_instance.instance.*.public_ip
 }
 
+output "private_ips" {
+  description = "List of private/internal IPs"
+  value       = aws_instance.instance.*.private_ip
+}
+
 output "private_key" {
   value     = var.create_key ? tls_private_key.tls-private-key[0].private_key_pem : null
   sensitive = true

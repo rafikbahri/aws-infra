@@ -12,6 +12,7 @@ TODOs
 Finish CI:
 
 - main branch security strategy
+- fix ansible-lint: does not scan roles? fix paths
 - upgrade ansible/ansible-lint locally
 - set access keys using aws profiles
 - test

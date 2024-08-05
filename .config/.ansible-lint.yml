@@ -80,6 +80,7 @@ offline: true
 
 kinds:
   - playbook: "**/playbooks/*.{yml,yaml}"
+  - roles: "**/roles/*.{yml,yaml}"
   # - galaxy: "**/folder/galaxy.yml"
   # - tasks: "**/tasks/*.yml"
   # - vars: "**/vars/*.yml"

@@ -7,6 +7,7 @@ module "bastions-subnet" {
   cidr_block              = "192.168.15.0/24"
   map_public_ip_on_launch = true
   default_route_table_id  = module.main-vpc.route_table_id
+  has_internet_access     = true
   tags = {
     kind  = "public"
     group = "bastions"
