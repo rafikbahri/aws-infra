@@ -6,7 +6,7 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     env:
-      TF_CLI_ARGS_plan: "-var-file=../envs/dev.tfvars"
+      TF_CLI_ARGS_plan: "-var-file=envs/dev.tfvars"
     steps:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
