@@ -6,7 +6,7 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     env:
-      TF_CLI_ARGS: "-var-file=../envs/dev.tfvars"
+      TF_CLI_ARGS_plan: "-var-file=../envs/dev.tfvars"
     steps:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
@@ -25,8 +25,6 @@ jobs:
 
       - name: Terraform Format
         run: terraform fmt -check
-        env:
-          TF_CLI_ARGS: ""
 
       - name: Terraform Init
         run: terraform init
@@ -36,7 +34,6 @@ jobs:
 
       - name: Terraform Plan
         run: terraform plan
-
 
       - name: ansible-lint
         uses: ansible/ansible-lint@main
