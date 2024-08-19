@@ -56,3 +56,8 @@ variable "ssh_enabled" {
   type        = bool
   default     = true
 }
+
+variable "ssh_user" {
+  type        = string
+  description = "Maps environment variable $SSH_USER"
+}

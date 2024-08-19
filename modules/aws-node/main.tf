@@ -36,6 +36,7 @@ resource "aws_instance" "instance" {
     network_interface_id = aws_network_interface.interface[count.index].id
     device_index         = 0
   }
+  user_data = file(var.user_data_file)
   tags = merge(
     {
       Name = format("%s00%d", var.server_prefix, count.index + 1)

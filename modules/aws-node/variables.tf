@@ -76,3 +76,9 @@ variable "ssh_enabled" {
   type        = bool
   default     = true
 }
+
+variable "user_data_file" {
+  type        = string
+  default     = ""
+  description = "User data file path"
+}

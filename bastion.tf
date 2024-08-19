@@ -1,4 +1,3 @@
-
 module "bastions-subnet" {
   source                  = "./modules/aws-subnet"
   name                    = "bastion-subnet"
@@ -24,6 +23,7 @@ module "bastions" {
   subnet_id       = module.bastions-subnet.subnet_id
   private_ips     = ["192.168.15.11"]
   security_groups = [module.sg-admin.sg_id]
+  user_data_file  = ".config/cloudinit_user_data.yaml"
   tags = {
     purpose     = "bastion"
     description = "Serves for SSH access"
