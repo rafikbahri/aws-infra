@@ -15,10 +15,9 @@ module "main-vpc" {
   }
 }
 
-
-module "sg-admin" {
+module "sg-admin-bastions" {
   source      = "./modules/aws-sg"
-  name        = "sg_admin"
+  name        = "sg_admin_bastions"
   description = "Admin security group"
   vpc_id      = module.main-vpc.vpc_id
   ingress_rules = [
@@ -35,16 +34,24 @@ module "sg-admin" {
       self             = false
     }
   ]
-  egress_rules = [
+}
+
+module "sg-admin" {
+  source      = "./modules/aws-sg"
+  name        = "sg_admin"
+  description = "Admin security group incoming only from bastions"
+  vpc_id      = module.main-vpc.vpc_id
+  ingress_rules = [
     {
-      description      = "Outbound to respond to SSH."
-      from_port        = 0
-      to_port          = 0
-      protocol         = "-1"
-      cidr_blocks      = ["0.0.0.0/0"]
+      description = "SSH only from bastion hosts."
+      from_port   = 22
+      to_port     = 22
+      protocol    = "tcp"
+      cidr_blocks = [var.bastions_subnet_cidr]
+      # Required attribues: https://stackoverflow.com/a/69080432/5684155
       ipv6_cidr_blocks = []
       prefix_list_ids  = []
-      security_groups  = []
+      security_groups  = [module.sg-admin-bastions.sg_id]
       self             = false
     }
   ]

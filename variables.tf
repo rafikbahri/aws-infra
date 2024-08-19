@@ -61,3 +61,17 @@ variable "ssh_user" {
   type        = string
   description = "Maps environment variable $SSH_USER"
 }
+
+variable "bastions_subnet_cidr" {
+  type        = string
+  default     = "192.168.15.0/24"
+  description = "Bastions subnet CIDR block"
+}
+
+variable "etcd_subnet_cidr" {
+  type        = string
+  default     = "192.168.16.0/24"
+  description = "Etcd cluster subnet CIDR block"
+}
+
+
