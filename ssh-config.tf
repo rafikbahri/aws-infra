@@ -7,13 +7,12 @@ resource "local_file" "ssh_config" {
 Host                    ${module.bastions.hostnames[0]}
   HostName              ${module.bastions.public_ip[0]}
 
-%{for node in [module.etcd-cluster]}
-%{for hostname, ip in zipmap(node.hostnames, node.private_ips)}
+%{~for node in [module.etcd-cluster]~}
+%{~for hostname, ip in zipmap(node.hostnames, node.private_ips)~}
 Host                    ${hostname}
   HostName              ${ip}
-%{endfor}
-%{endfor}
-
+%{~endfor~}
+%{~endfor~}
 
 Host                    * !${module.bastions.hostnames[0]}
   ProxyJump             ${module.bastions.hostnames[0]}
