@@ -32,6 +32,31 @@ module "sg-admin-bastions" {
       prefix_list_ids  = []
       security_groups  = []
       self             = false
+    },
+    {
+      description = "Ping inside VPC."
+      from_port   = 0
+      to_port     = 0
+      protocol    = "icmp"
+      cidr_blocks = ["192.168.0.0/16"]
+      # Required attribues: https://stackoverflow.com/a/69080432/5684155
+      ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      security_groups  = []
+      self             = false
+    }
+  ]
+  egress_rules = [
+    {
+      description      = "Allow all outbound traffic."
+      from_port        = 0
+      to_port          = 0
+      protocol         = "-1"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      security_groups  = []
+      self             = false
     }
   ]
 }
@@ -52,6 +77,31 @@ module "sg-admin" {
       ipv6_cidr_blocks = []
       prefix_list_ids  = []
       security_groups  = [module.sg-admin-bastions.sg_id]
+      self             = false
+    },
+    {
+      description = "Ping inside VPC."
+      from_port   = 0
+      to_port     = 0
+      protocol    = "icmp"
+      cidr_blocks = ["192.168.0.0/16"]
+      # Required attribues: https://stackoverflow.com/a/69080432/5684155
+      ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      security_groups  = []
+      self             = false
+    }
+  ]
+  egress_rules = [
+    {
+      description      = "Allow all outbound traffic."
+      from_port        = 0
+      to_port          = 0
+      protocol         = "-1"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      security_groups  = []
       self             = false
     }
   ]
