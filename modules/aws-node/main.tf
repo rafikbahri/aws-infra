@@ -27,6 +27,36 @@ resource "aws_network_interface" "interface" {
   }
 }
 
+# # Create an IAM role for the EC2 instance
+# resource "aws_iam_role" "ssm_role" {
+#   name = "SSMInstanceRole"
+
+#   assume_role_policy = jsonencode({
+#     Version = "2012-10-17"
+#     Statement = [
+#       {
+#         Action = "sts:AssumeRole"
+#         Effect = "Allow"
+#         Principal = {
+#           Service = "ec2.amazonaws.com"
+#         }
+#       }
+#     ]
+#   })
+# }
+
+# # Attach the AmazonSSMManagedInstanceCore policy to the role
+# resource "aws_iam_role_policy_attachment" "ssm_policy" {
+#   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+#   role       = aws_iam_role.ssm_role.name
+# }
+
+# # Create an instance profile
+# resource "aws_iam_instance_profile" "ssm_instance_profile" {
+#   name = "SSMInstanceProfile"
+#   role = aws_iam_role.ssm_role.name
+# }
+
 resource "aws_instance" "instance" {
   count         = var.server_count
   ami           = var.ami_id
@@ -37,6 +67,7 @@ resource "aws_instance" "instance" {
     device_index         = 0
   }
   user_data = file(var.user_data_file)
+  # iam_instance_profile = aws_iam_instance_profile.ssm_instance_profile.name
   tags = merge(
     {
       Name = format("%s00%d", var.server_prefix, count.index + 1)

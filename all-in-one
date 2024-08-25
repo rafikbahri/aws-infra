@@ -1,4 +1,11 @@
 #!/usr/bin/zsh
 
+# -e immediate exit 
+# -u fail on unbound vars 
+# -x display running cmd
+# -o pipefail output failed cmd
+
+set -euxo pipefail
+
 jobs/deploy
 jobs/install

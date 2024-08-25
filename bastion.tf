@@ -23,7 +23,7 @@ module "bastions" {
   subnet_id       = module.bastions-subnet.subnet_id
   private_ips     = ["192.168.15.11"]
   create_key      = false
-  security_groups = [module.sg-admin-bastions.sg_id, module.sg-admin.sg_id]
+  security_groups = [module.sg-admin-bastions.sg_id, module.sg-admin.sg_id, module.sg-ssm.sg_id]
   user_data_file  = ".config/cloudinit_user_data.yaml"
   tags = {
     purpose     = "bastion"

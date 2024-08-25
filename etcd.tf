@@ -20,7 +20,7 @@ module "etcd-cluster" {
   vpc_id          = module.main-vpc.vpc_id
   subnet_id       = module.etcd-private-subnet.subnet_id
   create_key      = false
-  security_groups = [module.sg-admin.sg_id]
+  security_groups = [module.sg-admin.sg_id, module.sg-ssm.sg_id]
   user_data_file  = ".config/cloudinit_user_data.yaml"
   tags = {
     component = "etcd"

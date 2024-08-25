@@ -1,5 +1,7 @@
 #!/usr/bin/zsh
 
+set -euxo pipefail
+
 gh auth status
 
 # Set the repository (owner/repo)
