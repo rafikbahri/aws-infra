@@ -1,10 +1,11 @@
 module "etcd-private-subnet" {
-  source                  = "./modules/aws-subnet"
-  name                    = "etcd-private-subnet"
-  vpc_id                  = module.main-vpc.vpc_id
-  availability_zone       = "eu-west-3a"
-  cidr_block              = var.etcd_subnet_cidr
-  map_public_ip_on_launch = false
+  source                 = "./modules/aws-subnet"
+  name                   = "etcd-private-subnet"
+  vpc_id                 = module.main-vpc.vpc_id
+  availability_zone      = "eu-west-3a"
+  cidr_block             = var.etcd_subnet_cidr
+  default_route_table_id = module.main-vpc.route_table_id
+  has_internet_access    = true
   tags = {
     kind  = "private"
     group = "etcd"
@@ -20,7 +21,7 @@ module "etcd-cluster" {
   vpc_id          = module.main-vpc.vpc_id
   subnet_id       = module.etcd-private-subnet.subnet_id
   create_key      = false
-  security_groups = [module.sg-admin.sg_id, module.sg-ssm.sg_id]
+  security_groups = [module.sg-admin.sg_id, module.sg-admin.sg_id, module.sg-ssm.sg_id]
   user_data_file  = ".config/cloudinit_user_data.yaml"
   tags = {
     component = "etcd"
