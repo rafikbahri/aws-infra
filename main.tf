@@ -26,7 +26,9 @@ module "sg-admin-bastions" {
       from_port   = 22
       to_port     = 22
       protocol    = "tcp"
-      cidr_blocks = ["88.178.215.32/32"] # SSH only from my public internet IP
+      cidr_blocks = [
+        "88.178.215.32/32" # My public IP address 
+      ]
       # Required attribues: https://stackoverflow.com/a/69080432/5684155
       ipv6_cidr_blocks = []
       prefix_list_ids  = []
@@ -72,7 +74,9 @@ module "sg-admin" {
       from_port   = 22
       to_port     = 22
       protocol    = "tcp"
-      cidr_blocks = [var.bastions_subnet_cidr]
+      cidr_blocks = [
+        "35.180.112.80/29" # EC2 instance connect service IPs in my region https://ip-ranges.amazonaws.com/ip-ranges.json
+      ]
       # Required attribues: https://stackoverflow.com/a/69080432/5684155
       ipv6_cidr_blocks = []
       prefix_list_ids  = []
