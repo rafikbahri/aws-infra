@@ -34,7 +34,7 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan
+        run: jobs/plan
 
       - name: ansible-lint
         uses: ansible/ansible-lint@main
