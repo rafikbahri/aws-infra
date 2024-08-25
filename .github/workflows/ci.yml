@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TF_CLI_ARGS_plan: -var-file=envs/dev.tfvars
-      SSH_USER: ec2-user
+      TF_VAR_ssh_user: ec2-user
     steps:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
@@ -35,8 +35,6 @@ jobs:
 
       - name: Terraform Plan
         run: terraform plan
-        env:
-          SSH_USER: ec2-user
 
       - name: ansible-lint
         uses: ansible/ansible-lint@main
