@@ -20,7 +20,7 @@ resource "local_file" "ssh-key" {
 resource "aws_network_interface" "interface" {
   count           = var.server_count
   subnet_id       = var.subnet_id
-  private_ips     = var.private_ips
+  private_ips     = var.private_ips[count.index]
   security_groups = var.security_groups
   tags = {
     Name = format("primary_iface_%s00%d", var.server_prefix, count.index + 1)

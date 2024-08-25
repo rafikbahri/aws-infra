@@ -68,11 +68,13 @@ module "sg-admin" {
   vpc_id      = module.main-vpc.vpc_id
   ingress_rules = [
     {
-      description = "SSH only from bastion hosts."
+      description = "SSH using EC2 instance connect (from AWS console)."
       from_port   = 22
       to_port     = 22
       protocol    = "tcp"
-      cidr_blocks = [var.bastions_subnet_cidr]
+      cidr_blocks = [
+        "35.180.112.80/29" # EC2 instance connect service IPs in my region https://ip-ranges.amazonaws.com/ip-ranges.json
+      ]
       # Required attribues: https://stackoverflow.com/a/69080432/5684155
       ipv6_cidr_blocks = []
       prefix_list_ids  = []
