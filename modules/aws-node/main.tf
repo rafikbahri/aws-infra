@@ -1,3 +1,7 @@
+data "aws_iam_instance_profile" "ssm_instance_profile" {
+  name = "SSMInstanceProfile"
+}
+
 resource "tls_private_key" "tls-private-key" {
   count     = var.create_key ? 1 : 0
   algorithm = "RSA"
@@ -36,7 +40,8 @@ resource "aws_instance" "instance" {
     network_interface_id = aws_network_interface.interface[count.index].id
     device_index         = 0
   }
-  user_data = file(var.user_data_file)
+  user_data            = file(var.user_data_file)
+  iam_instance_profile = data.aws_iam_instance_profile.ssm_instance_profile.name
   tags = merge(
     {
       Name = format("%s00%d", var.server_prefix, count.index + 1)

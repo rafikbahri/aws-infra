@@ -26,7 +26,9 @@ module "sg-admin-bastions" {
       from_port   = 22
       to_port     = 22
       protocol    = "tcp"
-      cidr_blocks = ["88.178.215.32/32"] # SSH only from my public internet IP
+      cidr_blocks = [
+        "88.178.215.32/32" # My public IP address 
+      ]
       # Required attribues: https://stackoverflow.com/a/69080432/5684155
       ipv6_cidr_blocks = []
       prefix_list_ids  = []
