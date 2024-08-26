@@ -13,11 +13,11 @@ Host                    ${hostname}
 
 
 %{~for node in [module.etcd-cluster]~}
-%{~for hostname, ip in zipmap(node.hostnames, node.private_ips)~}
+%{~for hostname, ip in zipmap(node.hostnames, node.private_ips)}
 Host                    ${hostname}
   HostName              ${ip}
 %{~endfor~}
-%{~endfor~}
+%{~endfor}
 
 Host                    * !bastion* !${module.bastions.hostnames[0]}
   ProxyJump             ${module.bastions.hostnames[0]}

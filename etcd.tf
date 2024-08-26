@@ -20,6 +20,7 @@ module "etcd-cluster" {
   instance_type   = "t2.micro"
   vpc_id          = module.main-vpc.vpc_id
   subnet_id       = module.etcd-private-subnet.subnet_id
+  private_ips     = [["192.168.16.11"], ["192.168.16.12"], ["192.168.16.13"]]
   create_key      = false
   security_groups = [module.sg-admin.sg_id, module.sg-admin.sg_id, module.sg-ssm.sg_id]
   user_data_file  = ".config/cloudinit_user_data.yaml"
