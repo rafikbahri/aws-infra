@@ -70,7 +70,7 @@ module "sg-admin" {
   vpc_id      = module.main-vpc.vpc_id
   ingress_rules = [
     {
-      description = "SSH only from bastion hosts."
+      description = "SSH using EC2 instance connect (from AWS console)."
       from_port   = 22
       to_port     = 22
       protocol    = "tcp"

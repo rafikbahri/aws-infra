@@ -5,7 +5,9 @@ resource "local_file" "inventory" {
 # Terraform managed
 [all]
 [bastions]
-${module.bastions.hostnames[0]}
+%{for index in range(length(module.bastions.hostnames))~}
+${element(module.bastions.hostnames, index)}
+%{endfor~}
 
 [etcd]
 %{for index in range(length(module.etcd-cluster.hostnames))~}

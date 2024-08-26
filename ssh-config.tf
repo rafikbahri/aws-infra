@@ -4,8 +4,13 @@ resource "local_file" "ssh_config" {
   content         = <<EOT
 # Terraform managed
 
-Host                    ${module.bastions.hostnames[0]}
-  HostName              ${module.bastions.public_ip[0]}
+%{~for node in [module.bastions]~}
+%{~for hostname, ip in zipmap(node.hostnames, node.public_ip)}
+Host                    ${hostname}
+  HostName              ${ip}
+%{~endfor~}
+%{~endfor~}
+
 
 %{~for node in [module.etcd-cluster]~}
 %{~for hostname, ip in zipmap(node.hostnames, node.private_ips)~}
@@ -14,7 +19,7 @@ Host                    ${hostname}
 %{~endfor~}
 %{~endfor~}
 
-Host                    * !${module.bastions.hostnames[0]}
+Host                    * !bastion* !${module.bastions.hostnames[0]}
   ProxyJump             ${module.bastions.hostnames[0]}
 
 Host                    *
