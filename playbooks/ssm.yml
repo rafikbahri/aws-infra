@@ -8,7 +8,7 @@
     ansible_aws_ssm_region: eu-west-3
   pre_tasks:
     - name: Wait for connection
-      wait_for_connection:
+      ansible.builtin.wait_for_connection:
 
   tasks:
     - name: Test
