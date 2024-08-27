@@ -1,4 +1,3 @@
 #!/usr/bin/zsh
 
-echo "Static code analysis"
-ansible-lint $@
+ansible-lint -c .config/.ansible-lint.yml $@
