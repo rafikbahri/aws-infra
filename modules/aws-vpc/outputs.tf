@@ -15,10 +15,10 @@ output "vpc_cidr_block" {
 
 output "igw_id" {
   description = "ID of the Internet Gateway"
-  value       = try(aws_internet_gateway.gtw[0].id, "")
+  value       = try(aws_internet_gateway.igw[0].id, "")
 }
 
-output "route_table_id" {
-  description = "ID of the route table"
-  value       = aws_route_table.default.id
+output "public_internet_route_table_id" {
+  description = "ID of the public internet route table"
+  value       = aws_route_table.public.id
 }

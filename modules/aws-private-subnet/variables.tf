@@ -8,6 +8,13 @@ variable "vpc_id" {
   type        = string
 }
 
+variable "public_subnet_id" {
+  type        = string
+  default     = ""
+  description = "Public subnet ID that will host the NAT gateway"
+}
+
+
 variable "cidr_block" {
   description = "IPv4 CIDR block for the subnet"
   type        = string
@@ -30,12 +37,11 @@ variable "has_internet_access" {
   default     = false
 }
 
-variable "default_route_table_id" {
-  description = "Default route table ID"
+variable "private_internet_route_table_id" {
+  description = "Private internet route table ID"
   type        = string
   default     = ""
 }
-
 
 variable "tags" {
   description = "A map of tags to add to all resources in the subnet"
