@@ -1,14 +1,13 @@
 module "bastions-subnet" {
-  source                  = "./modules/aws-subnet"
-  name                    = "bastion-subnet"
-  vpc_id                  = module.main-vpc.vpc_id
-  availability_zone       = "eu-west-3a"
-  cidr_block              = var.bastions_subnet_cidr
-  map_public_ip_on_launch = true
-  default_route_table_id  = module.main-vpc.route_table_id
-  has_internet_access     = true
+  source                         = "./modules/aws-public-subnet"
+  name                           = "bastion-subnet"
+  vpc_id                         = module.main-vpc.vpc_id
+  availability_zone              = "eu-west-3a"
+  cidr_block                     = var.bastions_subnet_cidr
+  map_public_ip_on_launch        = true
+  public_internet_route_table_id = module.main-vpc.public_internet_route_table_id
+  has_internet_access            = true
   tags = {
-    kind  = "public"
     group = "bastions"
   }
 }

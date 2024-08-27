@@ -6,7 +6,8 @@ resource "aws_subnet" "subnet" {
 
   tags = merge(
     {
-      Name = var.name
+      Name = var.name,
+      kind = "public"
     },
     var.tags
   )
@@ -15,5 +16,5 @@ resource "aws_subnet" "subnet" {
 resource "aws_route_table_association" "internet" {
   count          = var.has_internet_access ? 1 : 0
   subnet_id      = aws_subnet.subnet.id
-  route_table_id = var.default_route_table_id
+  route_table_id = var.public_internet_route_table_id
 }

@@ -24,6 +24,7 @@ No modules.
 | [aws_network_interface.interface](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_interface) | resource |
 | [local_file.ssh-key](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [tls_private_key.tls-private-key](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key) | resource |
+| [aws_iam_instance_profile.ssm_instance_profile](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_instance_profile) | data source |
 
 ## Inputs
 
@@ -41,6 +42,7 @@ No modules.
 | <a name="input_ssh_enabled"></a> [ssh\_enabled](#input\_ssh\_enabled) | Whether SSH access to the instance is enabled or not | `bool` | `true` | no |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | Associated subnet ID | `string` | `""` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Instance tags | `map(string)` | `{}` | no |
+| <a name="input_user_data_file"></a> [user\_data\_file](#input\_user\_data\_file) | User data file path | `string` | `""` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | Associated VPC ID | `string` | `""` | no |
 
 ## Outputs
@@ -50,6 +52,7 @@ No modules.
 | <a name="output_hostnames"></a> [hostnames](#output\_hostnames) | List of hostnames (one per instance) |
 | <a name="output_identity_file"></a> [identity\_file](#output\_identity\_file) | n/a |
 | <a name="output_instance_id"></a> [instance\_id](#output\_instance\_id) | ID of the created EC2 instance |
+| <a name="output_private_ips"></a> [private\_ips](#output\_private\_ips) | List of private/internal IPs |
 | <a name="output_private_key"></a> [private\_key](#output\_private\_key) | n/a |
 | <a name="output_public_ip"></a> [public\_ip](#output\_public\_ip) | Public IP of the created EC2 instance |
 <!-- END_TF_DOCS -->

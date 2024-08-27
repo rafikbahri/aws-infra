@@ -11,7 +11,8 @@ resource "aws_vpc" "vpc" {
   )
 }
 
-resource "aws_internet_gateway" "gtw" {
+# Internet for public subnets
+resource "aws_internet_gateway" "igw" {
   count  = var.create_igw ? 1 : 0
   vpc_id = aws_vpc.vpc.id
   tags = merge(
@@ -22,13 +23,13 @@ resource "aws_internet_gateway" "gtw" {
   )
 }
 
-resource "aws_route_table" "default" {
+resource "aws_route_table" "public" {
   vpc_id = aws_vpc.vpc.id
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.gtw[0].id
+    gateway_id = aws_internet_gateway.igw[0].id
   }
   tags = {
-    Name = "DefaultRouteTable"
+    Name = "PublicInternetRouteTable"
   }
 }
