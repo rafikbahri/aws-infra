@@ -85,8 +85,8 @@ module "sg-admin" {
     },
     {
       description = "Ping inside VPC."
-      from_port   = 0
-      to_port     = 0
+      from_port   = -1
+      to_port     = -1
       protocol    = "icmp"
       cidr_blocks = ["192.168.0.0/16"]
       # Required attribues: https://stackoverflow.com/a/69080432/5684155
