@@ -1,0 +1,12 @@
+---
+- name: Users
+  ansible.builtin.user:
+    name: "{{ user.name }}"
+    group: "{{ user.group }}"
+    shell: "{{ user.shell }}"
+    create_home: "{{ user.create_home | default(false) }}"
+    password: "{{ user.password }}"
+    state: "{{ user.state | default('absent') }}"
+  loop: "{{ users }}"
+  loop_control:
+    loop_var: bastion_user

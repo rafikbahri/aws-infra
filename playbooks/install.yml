@@ -1,6 +1,7 @@
 ---
 - name: Ansible playbook test
   hosts: bastions
+  become: true
   gather_facts: false
   pre_tasks:
     - name: Wait for target connection to become reachable/usable
@@ -14,3 +15,5 @@
     - name: Test
       ansible.builtin.debug:
         msg: "This test is to check SSH connectivity"
+  roles:
+    - role: bastion
