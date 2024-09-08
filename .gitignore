@@ -5,3 +5,4 @@ terraform.tfstate*
 inventory/dev
 inventory/prod
 inventory/staging
+inventory/group_vars/dev/*

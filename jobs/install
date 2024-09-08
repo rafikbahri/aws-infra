@@ -1,5 +1,7 @@
 #!/usr/bin/zsh
 
+set -euo pipefail
+
 source $(dirname $0)/.ansible.inc
 
 # Initialize the bastion hosts first (to be able to Proxy Jump SSH)

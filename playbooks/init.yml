@@ -1,5 +1,5 @@
 ---
-- name: Ansible playbook test
+- name: Initialize
   hosts: all
   become: true
   gather_facts: false

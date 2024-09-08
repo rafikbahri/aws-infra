@@ -43,8 +43,8 @@ use_default_rules: true
 # still visible, making it easier to address later.
 skip_list:
   - skip_this_tag
-  - yaml[line-length] 
-
+  - yaml[line-length]
+  - name[casing]
 # Ansible-lint does not automatically load rules that have the 'opt-in' tag.
 # You must enable opt-in rules by listing each rule 'id' below.
 enable_list:

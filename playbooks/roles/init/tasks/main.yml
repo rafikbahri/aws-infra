@@ -1,20 +1,9 @@
 ---
-- name: Users
-  ansible.builtin.user:
-    name: "{{ bastion_user.name }}"
-    group: "{{ bastion_user.group }}"
-    shell: "{{ bastion_user.shell }}"
-    create_home: "{{ bastion_user.create_home | default(false) }}"
-    state: "{{ bastion_user.state | default('absent') }}"
+- name: users
+  ansible.builtin.include_tasks: user.yml
   loop: "{{ users }}"
   loop_control:
-    loop_var: bastion_user
+    loop_var: init_user
 
-- name: Authorized keys
-  ansible.posix.authorized_key:
-    user: "{{ bastion_user.name }}"
-    state: present
-    key: "{{ bastion_user.pub_key }}"
-  loop: "{{ users }}"
-  loop_control:
-    loop_var: bastion_user
+- name: hosts
+  ansible.builtin.import_tasks: hosts.yml

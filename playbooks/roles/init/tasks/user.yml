@@ -1,0 +1,17 @@
+---
+- name: user | user
+  ansible.builtin.user:
+    name: "{{ init_user.name }}"
+    group: "{{ init_user.group }}"
+    shell: "{{ init_user.shell }}"
+    create_home: "{{ init_user.create_home | default(false) }}"
+    state: "{{ init_user.state | default('absent') }}"
+
+- name: user | authorized keys
+  ansible.posix.authorized_key:
+    user: "{{ init_user.name }}"
+    state: present
+    key: "{{ init_user_key }}"
+  loop: "{{ init_user.authorized_keys }}"
+  loop_control:
+    loop_var: init_user_key
