@@ -1,0 +1,9 @@
+---
+users:
+  - name: rbahri
+    group: adm
+    shell: /bin/bash
+    create_home: true
+    state: present
+    authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCqW8IB8moke9/Kk03aADqYQsH3seHh8A5m3SsWXljBeaiOgyXWwF6nCqajwWjgY+3hV+gOoe68ThXKoUR4IzQW+vuWGUO4HpO387UYIQqEFSoHn1Jn9unJjAa1YXTs0EGBbghQMfT5BuZhXywlvRyro1NjV0l+eH6U+gYXcd55ErBJIJ0/g68fr8F/RTsT17aXICLgD9TLa7c8WsbYowW79duAiQ2Bd0VkHrE2YV1RJ2l1LavbAh+lEvjuRSF7Z/poX/ZDHzMVMSEFy1Da//c80QjxmUKwdJ6jI9nLyoMn6WHQTZ8phI1oqLkk4UukLlf4wD9DmQc3dsNNfUYD5cAe+U5dAWsncqdu88o1BMNtGkOr9xoiPafflSrIiRLMoFtS194fSJRB6oZhhPnE6yNLNUmHmLeN0kYQ4PvN+pz3XUA7kNQNf1deqd6XRZkZ25aRn2X/CJxrksRK+bVGE/tTUp4JcJD3/y28BrFJzZ4S5gUC42/JC3f0OvABTeE6Ezk= rbahri@rbahri
