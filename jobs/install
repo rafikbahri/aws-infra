@@ -2,4 +2,8 @@
 
 source $(dirname $0)/.ansible.inc
 
-ansible-playbook $@ -u $SSH_INIT_USER playbooks/install.yml
+# Initialize the bastion hosts first (to be able to Proxy Jump SSH)
+ansible-playbook $@ -u $SSH_INIT_USER -l bastions playbooks/init.yml
+
+# Initialize the rest of the platform
+ansible-playbook $@ -u $SSH_INIT_USER playbooks/init.yml
