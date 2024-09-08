@@ -1,12 +1,20 @@
 ---
 - name: Users
   ansible.builtin.user:
-    name: "{{ user.name }}"
-    group: "{{ user.group }}"
-    shell: "{{ user.shell }}"
-    create_home: "{{ user.create_home | default(false) }}"
-    password: "{{ user.password }}"
-    state: "{{ user.state | default('absent') }}"
+    name: "{{ bastion_user.name }}"
+    group: "{{ bastion_user.group }}"
+    shell: "{{ bastion_user.shell }}"
+    create_home: "{{ bastion_user.create_home | default(false) }}"
+    state: "{{ bastion_user.state | default('absent') }}"
+  loop: "{{ users }}"
+  loop_control:
+    loop_var: bastion_user
+
+- name: Authorized keys
+  ansible.posix.authorized_key:
+    user: "{{ bastion_user.name }}"
+    state: present
+    key: "{{ bastion_user.pub_key }}"
   loop: "{{ users }}"
   loop_control:
     loop_var: bastion_user
