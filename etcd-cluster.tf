@@ -16,8 +16,8 @@ module "etcd-cluster" {
   source          = "./modules/aws-node"
   server_count    = var.etcd_cluster_servers_count
   server_prefix   = "etcd"
-  ami_id          = "ami-0546127e0cf2c6498"
-  instance_type   = "t2.micro"
+  ami_id          = var.ami_id
+  instance_type   = var.instance_type
   vpc_id          = module.main-vpc.vpc_id
   subnet_id       = module.etcd-subnet.subnet_id
   private_ips     = [["192.168.16.11"], ["192.168.16.12"], ["192.168.16.13"]]

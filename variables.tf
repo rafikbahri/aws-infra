@@ -22,13 +22,13 @@ variable "server_prefix" {
 
 
 variable "instance_type" {
-  description = "EC2 instance type"
+  description = "Default EC2 instance type"
   type        = string
-  default     = "t2.micro"
+  default     = "t2.large"
 }
 
 variable "ami_id" {
-  description = "AMI ID for the EC2 instance"
+  description = "Default AMI ID for the EC2 instance - Amazon Linux 2"
   type        = string
   default     = "ami-0546127e0cf2c6498"
 }
