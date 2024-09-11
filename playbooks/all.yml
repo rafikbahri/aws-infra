@@ -1,0 +1,6 @@
+---
+- name: Initialize platform
+  ansible.builtin.import_playbook: init.yml
+
+- name: Etcd
+  ansible.builtin.import_playbook: etcd.yml
