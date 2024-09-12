@@ -4,11 +4,11 @@ set -euo pipefail
 
 source $(dirname $0)/.ansible.inc
 
-# # Initialize the bastion hosts first (to be able to Proxy Jump SSH)
-# ansible-playbook $@ -u $SSH_INIT_USER -l bastions playbooks/init.yml
+# Initialize the bastion hosts first (to be able to Proxy Jump SSH)
+ansible-playbook $@ -u $SSH_INIT_USER -l bastions playbooks/init.yml
 
-# # Initialize the rest of the platform
-# ansible-playbook $@ -u $SSH_INIT_USER playbooks/init.yml
+# Initialize the rest of the platform
+ansible-playbook $@ -u $SSH_INIT_USER playbooks/init.yml
 
 # Continue with the installation of the platform
 ansible-playbook $@ -u $SSH_INIT_USER playbooks/all.yml

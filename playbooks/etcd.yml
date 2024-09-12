@@ -1,5 +1,6 @@
 ---
 - name: Install Etcd cluster
   hosts: etcd
+  become: true
   roles:
-    - role: etcd
+    - role: githubixx.etcd
