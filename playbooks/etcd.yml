@@ -1,7 +1,0 @@
----
-- name: Install Etcd cluster
-  hosts: etcd
-  tasks:
-    - name: Download Etcd binaries
-      ansible.builtin.debug:
-        msg: "Download..."
