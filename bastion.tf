@@ -1,5 +1,5 @@
 module "bastions-subnet" {
-  source                         = "./modules/aws-public-subnet"
+  source                         = "github.com/rafikbahri/tf-aws-public-subnet"
   name                           = "bastion-subnet"
   vpc_id                         = module.main-vpc.vpc_id
   availability_zone              = "eu-west-3a"
