@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "main-vpc" {
-  source               = "./modules/aws-vpc"
+  source               = "github.com/rafikbahri/tf-aws-vpc"
   name                 = "main-vpc"
   cidr_block           = "192.168.0.0/16"
   enable_dns_hostnames = true
