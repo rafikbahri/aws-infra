@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "main-vpc" {
-  source               = "./modules/aws-vpc"
+  source               = "github.com/rafikbahri/tf-aws-vpc"
   name                 = "main-vpc"
   cidr_block           = "192.168.0.0/16"
   enable_dns_hostnames = true
@@ -16,7 +16,7 @@ module "main-vpc" {
 }
 
 module "sg-admin-bastions" {
-  source      = "./modules/aws-sg"
+  source      = "github.com/rafikbahri/tf-aws-sg"
   name        = "sg_admin_bastions"
   description = "Admin security group"
   vpc_id      = module.main-vpc.vpc_id
@@ -64,7 +64,7 @@ module "sg-admin-bastions" {
 }
 
 module "sg-admin" {
-  source      = "./modules/aws-sg"
+  source      = "github.com/rafikbahri/tf-aws-sg"
   name        = "sg_admin"
   description = "Admin security group incoming only from bastions"
   vpc_id      = module.main-vpc.vpc_id
