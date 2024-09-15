@@ -1,5 +1,5 @@
 module "etcd-subnet" {
-  source              = "./modules/aws-private-subnet"
+  source              = "github.com/rafikbahri/tf-aws-private-subnet"
   name                = "etcd-subnet"
   vpc_id              = module.main-vpc.vpc_id
   availability_zone   = "eu-west-3a"
