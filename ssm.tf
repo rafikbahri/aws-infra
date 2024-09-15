@@ -1,5 +1,5 @@
 module "sg-ssm" {
-  source      = "./modules/aws-sg"
+  source      = "github.com/rafikbahri/tf-aws-sg"
   name        = "sg_ssm"
   description = "Allow SSM traffic"
   vpc_id      = module.main-vpc.vpc_id
