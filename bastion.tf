@@ -13,7 +13,7 @@ module "bastions-subnet" {
 }
 
 module "bastions" {
-  source          = "./modules/aws-node"
+  source          = "github.com/rafikbahri/tf-aws-node"
   server_count    = var.bastion_servers_count
   server_prefix   = "bastion"
   ami_id          = "ami-0546127e0cf2c6498"

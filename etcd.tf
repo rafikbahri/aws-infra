@@ -13,7 +13,7 @@ module "etcd-subnet" {
 }
 
 module "etcd-cluster" {
-  source          = "./modules/aws-node"
+  source          = "github.com/rafikbahri/tf-aws-node"
   server_count    = var.etcd_cluster_servers_count
   server_prefix   = "etcd"
   ami_id          = "ami-0546127e0cf2c6498"
