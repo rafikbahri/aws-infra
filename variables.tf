@@ -1,3 +1,16 @@
+variable "vpc_name" {
+  description = "Name of the main VPC"
+  type        = string
+  default     = "main-vpc"
+}
+
+
+variable "vpc_cidr" {
+  description = "CIDR of the main VPC"
+  type        = string
+  default     = "192.168.0.0/16"
+}
+
 variable "platform" {
   description = "Environment type (dev, prod, staging)"
   type        = string
@@ -19,7 +32,6 @@ variable "server_prefix" {
   default     = "ec2"
   type        = string
 }
-
 
 variable "instance_type" {
   description = "EC2 instance type"
