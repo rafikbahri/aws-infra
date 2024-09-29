@@ -7,7 +7,7 @@ module "etcd-subnet" {
   public_subnet_id    = module.bastions-subnet.subnet_id
   has_internet_access = true
   tags = {
-    kind  = "public"
+    kind  = "private"
     group = "etcd"
   }
 }
