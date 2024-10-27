@@ -27,6 +27,13 @@ variable "etcd_cluster_servers_count" {
   default     = 0
 }
 
+variable "eks_create_cluster" {
+  description = "Whether to create an EKS cluster or not"
+  type        = bool
+  default     = false
+}
+
+
 variable "server_prefix" {
   description = "Instance name prefix"
   default     = "ec2"

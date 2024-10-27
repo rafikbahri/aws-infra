@@ -1,4 +1,5 @@
 resource "local_file" "ssh_config" {
+  count           = var.bastion_servers_count
   filename        = ".ssh/config"
   file_permission = "0644"
   content         = <<EOT
