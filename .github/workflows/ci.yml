@@ -43,7 +43,9 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: jobs/plan
+        run: |
+          ls jobs/
+          jobs/plan
 
       - name: ansible-lint
         uses: ansible/ansible-lint@main
