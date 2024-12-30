@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       AWS_INFRA_PLATFORM: dev
+      AWS_PROFILE: personal
       TF_CLI_ARGS_plan: -var-file=envs/dev.tfvars
       TF_VAR_ssh_user: ec2-user
     steps:
@@ -24,6 +25,13 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-3
+
+      - name: Create AWS Profile
+        run: |
+          mkdir -p ~/.aws
+          echo "[${AWS_PROFILE}]" > ~/.aws/credentials
+          echo "aws_access_key_id = ${{ secrets.AWS_ACCESS_KEY_ID }}" >> ~/.aws/credentials
+          echo "aws_secret_access_key = ${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ~/.aws/credentials
 
       - name: Terraform Format
         run: terraform fmt -check
