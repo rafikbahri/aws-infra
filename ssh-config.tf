@@ -20,6 +20,13 @@ Host                    ${hostname}
 %{~endfor~}
 %{~endfor}
 
+%{~for node in [module.thehive-cluster]~}
+%{~for hostname, ip in zipmap(node.hostnames, node.private_ips)}
+Host                    ${hostname}
+  HostName              ${ip}
+%{~endfor~}
+%{~endfor}
+
 Host                    * !bastion* !${module.bastions.hostnames[0]}
   ProxyJump             ${module.bastions.hostnames[0]}
 
@@ -27,6 +34,7 @@ Host                    *
   user                  ${var.ssh_user}
   StrictHostKeyChecking no
   UserKnownHostsFile    /dev/null
+  IdentityFile         ~/.ssh/id_ed25519_bastion
 
 EOT
 }

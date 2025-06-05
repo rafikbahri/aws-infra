@@ -27,6 +27,11 @@ variable "etcd_cluster_servers_count" {
   default     = 0
 }
 
+variable "thehive_cluster_servers_count" {
+  description = "Number of thehive cluster nodes to be created"
+  default     = 0
+}
+
 variable "eks_create_cluster" {
   description = "Whether to create an EKS cluster or not"
   type        = bool
@@ -94,3 +99,8 @@ variable "etcd_subnet_cidr" {
 }
 
 
+variable "thehive_subnet_cidr" {
+  type        = string
+  default     = "192.168.17.0/24"
+  description = "The hive cluster subnet CIDR block"
+}

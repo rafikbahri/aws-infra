@@ -16,6 +16,11 @@ ${element(module.bastions.hostnames, index)}
 %{for index in range(length(module.etcd-cluster.hostnames))~}
 ${element(module.etcd-cluster.hostnames, index)}
 %{endfor~}
+
+[thehive]
+%{for index in range(length(module.thehive-cluster.hostnames))~}
+${element(module.thehive-cluster.hostnames, index)}
+%{endfor~}
 EOT
 }
 
@@ -37,6 +42,12 @@ etc_hosts:
     names:
       - ${element(module.etcd-cluster.hostnames, index)}
       - ${element(module.etcd-cluster.hostnames, index)}.${var.platform}
+%{endfor~}
+%{for index in range(length(module.thehive-cluster.hostnames))~}
+  - ip: ${element(module.thehive-cluster.private_ips, index)}
+    names:
+      - ${element(module.thehive-cluster.hostnames, index)}
+      - ${element(module.thehive-cluster.hostnames, index)}.${var.platform}
 %{endfor~}
 EOT
 }
